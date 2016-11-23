@@ -1,0 +1,24 @@
+version: '2'
+services:
+ service_php5:
+  build:
+   context: .
+   dockerfile: DockerfilePhp
+  ports:
+   - "9002:80"
+  volumes:
+   - .:/var/www/
+  links:
+   - service_mysql_vdlux
+  depends_on:
+   - service_mysql_vdlux
+  container_name: php5
+
+ service_mysql_vdlux:
+  build:
+   context: .
+   dockerfile: DockerfileMysql
+  container_name: mysql_vdlux
+  ports:
+   - "33062:3306"
+

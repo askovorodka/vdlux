@@ -1,0 +1,7 @@
+FROM php:5.6-apache
+WORKDIR /var/www
+RUN apt-get update \
+	&& docker-php-ext-install -j$(nproc) mbstring \
+ 	&& docker-php-ext-install -j$(nproc) mysql \
+	&& docker-php-ext-install -j$(nproc) pdo_mysql
+

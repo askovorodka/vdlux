@@ -1,0 +1,7 @@
+FROM mysql
+ENV MYSQL_ROOT_PASSWORD=password
+ENV MYSQL_DATABASE=vdlux
+ENV MYSQL_USER=vdlux
+ENV MYSQL_PASSWORD=pwd
+
+ADD ./vdlux.sql /docker-entrypoint-initdb.d/vdlux.sql
