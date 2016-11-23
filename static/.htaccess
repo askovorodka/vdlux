@@ -1,0 +1,28 @@
+RewriteEngine on
+# RewriteBase /
+
+# Убираем www в начале
+RewriteCond %{HTTP_HOST} ^www\.vdlux\.ru$ [NC]
+RewriteRule ^(.*)$ http://vdlux.ru/$1 [R=301,L]
+
+# Убираем html с конца и делаем редиректы
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^.*$ $0.html [L,QSA]
+RewriteCond %{THE_REQUEST} ([^\s]*)\.html(\?[^\s]*)?
+RewriteRule (.*) %1 [R=301,L]
+
+# Назначаем страницу ошибки 404
+ErrorDocument 404 http://vdlux.ru/404
+
+# Begin Muse Generated redirects
+# End Muse Generated redirects
+
+# Устанавливаем редиректы
+Redirect 301 /index http://vdlux.ru
+Redirect 301 /gaz_kotel http://vdlux.ru/montazh-gazovyh-kotlov-otopleniya
+Redirect 301 /elek_kotel http://vdlux.ru/montazh-electricheskogo-kotla-otopleniya
+Redirect 301 /vodosnab_kolodca http://vdlux.ru/vodosnabzhenie-iz-kolodca
+Redirect 301 /montazh_sistem http://vdlux.ru/montazh-inzhenernyh-sistem   
+

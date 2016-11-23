@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Host: vdlux.ru
+Sitemap: http://vdlux.ru/sitemap.xml
