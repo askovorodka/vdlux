@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.11, created on 2016-01-21 08:37:25
-         compiled from /var/www/alex/data/www/scl.mosharov.com//modules/tree/admin/templates/tree.a_edit.html */ ?>
+<?php /* Smarty version 2.6.11, created on 2016-11-24 12:53:19
+         compiled from /var/www/html//modules/tree/admin/templates/tree.a_edit.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'replace', '/var/www/alex/data/www/scl.mosharov.com//modules/tree/admin/templates/tree.a_edit.html', 168, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'replace', '/var/www/html//modules/tree/admin/templates/tree.a_edit.html', 168, false),)), $this); ?>
 <?php if ($this->_tpl_vars['node']['module'] == 'page'):  echo '
 <script language=JavaScript src=\'';  echo $this->_tpl_vars['base_url']; ?>
 /<?php echo 'javascript/editor/scripts/language/russian/editor_lang.js\'></script>

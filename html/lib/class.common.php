@@ -57,7 +57,7 @@ class Common {
 			$cabinet_menu=array(
 				array(
 					"id" => "1",
-					"name" => "Вход в систему",
+					"name" => "пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ",
 					"url" => "login",
 					"param_left" => "1",
 					"param_right" => "2",
@@ -68,7 +68,7 @@ class Common {
 
 					array(
 					"id" => "3",
-					"name" => "Выполненные заказы",
+					"name" => "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ",
 					"url" => "orders",
 					"param_left" => "5",
 					"param_right" => "6",
@@ -79,7 +79,7 @@ class Common {
 
 				array(
 					"id" => "4",
-					"name" => "Регистрация",
+					"name" => "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ",
 					"url" => "register",
 					"param_left" => "7",
 					"param_right" => "8",
@@ -89,7 +89,7 @@ class Common {
 				),
 				array(
 					"id" => "5",
-					"name" => "Выйти из системы",
+					"name" => "пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ",
 					"url" => "logout",
 					"param_left" => "9",
 					"param_right" => "10",
@@ -147,7 +147,7 @@ class Common {
 		if ($section == 'front') $cond="WHERE section!='admin'";
 		if ($section == 'admin') $cond="WHERE section!='front'";
 		$result=$db->query("SELECT * FROM fw_conf $cond");
-		while ($data=mysql_fetch_assoc($result)) {
+		while ($data=mysqli_fetch_assoc($result)) {
 			if (!defined($data["conf_key"])) define($data["conf_key"],$data["conf_value"]);
 		}
 	
@@ -269,7 +269,7 @@ class Common {
 	
 		if (isset($_SESSION['fw_user']) && $_SESSION['fw_user']['priv']<=$priv) return true;
 		else {
-			die('у тҐИ §ѕєўИтҐтўП§ў яЅҐт єыя тыяўы§ѕ§јя єҐ§§ўуў єѕщИттјя');
+			die('пїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅП§пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ');
 		}
 	}
 	
@@ -327,7 +327,7 @@ class Common {
 	static function pager($result,$per_page,$current_page) {
 
 		if (is_resource($result)) {
-			$count = mysql_fetch_row($result);
+			$count = mysqli_fetch_row($result);
 			$count=$count[0];
 		}
 		else $count=$result;
@@ -376,7 +376,7 @@ class Common {
 		$url=str_replace($path,"",$url);
 		$url=str_replace("/"," ",$url);
 		$url=trim($url);
-		$url=mysql_real_escape_string($url);
+		//$url=mysql_real_escape_string($url);
 		$url=explode(" ",$url);
 		return $url;
 	}

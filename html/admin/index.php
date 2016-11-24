@@ -1,7 +1,7 @@
 <?php
 ob_start("ob_gzhandler");
 session_start();
-
+date_default_timezone_set('Europe/Moscow');
 //error_reporting(E_ALL);
 //ini_set('display_errors','On');
 
@@ -18,14 +18,14 @@ require_once '../lib/class.array.php';
 
 $_SESSION['db_connections'] = 0;
 
-/* ------------ гюцпсгйю ьюакнмхгюрнпю --------------------*/
+/* ------------ О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫ --------------------*/
 $smarty = new Smarty;
 
 $smarty->template_dir = 'templates/';
 $smarty->compile_dir = '../lib/smarty/admin_templates_c/';
 $smarty->cache_dir = '../lib/smarty/admin_cache/';
 
-/* ------------ ондйкчвюеляъ й аюге дюммшу -------------- */
+/* ------------ О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫ О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫ -------------- */
 $db=new db(DB_NAME, DB_HOST, DB_USER, DB_PASS);
 
 //$smarty->debugging=true;
@@ -41,9 +41,9 @@ if ($check_auth=='0' && @$_GET['action']!='edit_post') {
 $modules_list=$db->get_all("SELECT * FROM fw_modules WHERE priv>='".$_SESSION['fw_user']['priv']."' AND status='1'");
 
 
-$navigation[]=array("url" => BASE_URL."/admin/","title" => 'цКЮБМЮЪ');
+$navigation[]=array("url" => BASE_URL."/admin/","title" => 'О©╫О©╫О©╫О©╫О©╫О©╫О©╫');
 
-/* --опнбепъел апюсгеп йкхемрю х цпсгхл мсфмши педюйрнп --*/
+/* --О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫ О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫ --*/
 
 if(strpos($_SERVER["HTTP_USER_AGENT"],"MSIE")) {
   $smarty->assign("editor_mode","editor.js");
@@ -64,7 +64,7 @@ if (get_magic_quotes_gpc()) {
 }
 
 
-/* --------------ондйкчвюел мсфмши лндскэ ----------------*/
+/* --------------О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫ ----------------*/
 if (isset($_GET['mod'])) {
 
   $smarty->assign("current_module",$_GET['mod']);
@@ -93,7 +93,7 @@ else {
   require_once 'main.php';
   $smarty->assign("template","main.html");
 }
-/* --------- цемепхпсел цкюбмне лемч юдлхмйх -------------*/
+/* --------- О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫ -------------*/
 $main_menu = '';
 for ($m=0;$m<count($modules_list);$m++) {
   $menu_file='../modules/'.$modules_list[$m]['name'].'/admin/menu.php';
@@ -105,11 +105,11 @@ function cmp ($a,$b) {
   }
   usort($main_menu,"cmp");
 
-/* ----------------------мюбхцюжхъ -----------------------*/
+/* ----------------------О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫ -----------------------*/
 
 $smarty->assign("navigation",$navigation);
 
-/*-----------------------RSS онрнй---------------------- */
+/*-----------------------RSS О©╫О©╫О©╫О©╫О©╫---------------------- */
 
 /*if (RSS_SHOW == 'true') {
 
@@ -125,7 +125,7 @@ $smarty->assign("navigation",$navigation);
   }
 }*/
 
-/*--------- оепедю╗л ялюпрх пюгкхвмше оепелеммше ---------*/
+/*--------- О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫ ---------*/
 
 $smarty->assign("main_menu",$main_menu);
 $smarty->assign("base_url",BASE_URL);

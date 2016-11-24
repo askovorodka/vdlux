@@ -8,28 +8,28 @@ class db {
 
 	function db($db=DB_NAME, $host=DB_HOST, $user=DB_USER, $pass=DB_PASS) {
 		$this->db = $db; $this->host = $host; $this->user = $user; $this->pass = $pass;
-		if($this->link = mysql_connect($host,$user,$pass)) {
-			mysql_query("SET NAMES cp1251");
-			mysql_query("SET SESSION group_concat_max_len = 1058576");
-			return mysql_select_db($db, $this->link);
+		if($this->link = mysqli_connect($host,$user,$pass)) {
+			mysqli_query($this->link, "SET NAMES cp1251");
+			mysqli_query($this->link, "SET SESSION group_concat_max_len = 1058576");
+			return mysqli_select_db($this->link, $db);
 		}
 		else $this->error();
 	}
 
 	function transaction_start() {
-		$this->result = mysql_query("START TRANSACTION", $this->link);
+		$this->result = mysqli_query($this->link, "START TRANSACTION");
 		if (!$this->result) $this->error();
 		else return $this->result;
 	}
 
 	function transaction_commit() {
-		$this->result = mysql_query("COMMIT", $this->link);
+		$this->result = mysqli_query($this->link, "COMMIT");
 		if (!$this->result) $this->error();
 		else return $this->result;
 	}
 	
 	function transaction_rollback() {
-		$this->result = mysql_query("ROLLBACK", $this->link);
+		$this->result = mysqli_query($this->link, "ROLLBACK");
 		if (!$this->result) $this->error();
 		else return $this->result;
 	}
@@ -37,7 +37,7 @@ class db {
 	function query($sql,$show='0') {	
 		if(!$this->link) $this->error();
 		if ($show != '0') echo "<p>$sql</p>\n";
-		$this->result = mysql_query($sql, $this->link);
+		$this->result = mysqli_query($this->link, $sql);
 		$_SESSION['db_connections']++;
 		if (!$this->result) $this->error();
 		else return $this->result;
@@ -46,10 +46,10 @@ class db {
 	function get_all($sql,$show='0') {
 		if(!$this->link) $this->error();
 		if ($show != '0') echo "<p>$sql</p>\n";
-		$this->result = mysql_query($sql);
+		$this->result = mysqli_query($this->link, $sql);
 		$this->content = array();
 		if (!$this->result) $this->error();
-		while ($this->arr = mysql_fetch_assoc($this->result)) {
+		while ($this->arr = mysqli_fetch_assoc($this->result)) {
 			$this->content[] = $this->arr;
 		}
 		$_SESSION['db_connections']++;
@@ -59,20 +59,20 @@ class db {
 	function get_single($sql,$show='0') {
 		if(!$this->link) $this->error();
 		if ($show != '0') echo "<p>$sql</p>\n";
-		$this->result = mysql_query($sql);
+		$this->result = mysqli_query($this->link, $sql);
 		$this->content = array();
 		if (!$this->result) $this->error();
-		$this->content = mysql_fetch_assoc($this->result);
+		$this->content = mysqli_fetch_assoc($this->result);
 		$_SESSION['db_connections']++;
 		return $this->content;
 	}
 
 	function error() {
-		die("<center><font color=red>Query failed!</font></center> MySQL answer: ".mysql_error($this->link)."<br><br><center><a href=javascript:history.back()>Back</a></center>");
+		die("<center><font color=red>Query failed!</font></center> MySQL answer: ".mysqli_error($this->link)."<br><br><center><a href=javascript:history.back()>Back</a></center>");
 	}
 	
 	function db_close() {
-		mysql_close($this->link);
+		mysqli_close($this->link);
 	}
 	
 	
@@ -81,21 +81,21 @@ class db {
 function query_single($q,$assoc=false) {
   $r=$this->query($q);
   if(!$r) return false;
-  if(!mysql_num_rows($r))
+  if(!mysqli_num_rows($r))
   {
-    mysql_free_result($r);
+    mysqli_free_result($r);
     return false;
   }
   if($assoc)
   {
-    $f=mysql_fetch_assoc($r);
-    mysql_free_result($r);
+    $f=mysqli_fetch_assoc($r);
+    mysqli_free_result($r);
     return $f;
   }
   else
   {
-    $f=mysql_fetch_row($r);
-    mysql_free_result($r);
+    $f=mysqli_fetch_row($r);
+    mysqli_free_result($r);
     if(count($f)>1)
       return $f;
     else
@@ -104,31 +104,31 @@ function query_single($q,$assoc=false) {
 }
 
 	function affected_rows() {
-		return mysql_affected_rows($this->link);
+		return mysqli_affected_rows($this->link);
 	}
 
 	function num_rows($q) {
-		return mysql_num_rows($q);
+		return mysqli_num_rows($q);
 	}
 
 	function fetch_array($q, $result_type=MYSQL_ASSOC) {
-		return mysql_fetch_array($q, $result_type);
+		return mysqli_fetch_array($q, $result_type);
 	}
 
 	function fetch_object($q) {
-		return mysql_fetch_object($q);
+		return mysqli_fetch_object($q);
 	}
 
 	function data_seek($q, $n) {
-		return mysql_data_seek($q, $n);
+		return mysqli_data_seek($q, $n);
 	}
 
 	function free_result($q) {
-		return mysql_free_result($q);
+		return mysqli_free_result($q);
 	}
 
 	function insert_id() {
-		return mysql_insert_id($this->link);
+		return mysqli_insert_id($this->link);
 	}
 
 	function error_die($msg='') {

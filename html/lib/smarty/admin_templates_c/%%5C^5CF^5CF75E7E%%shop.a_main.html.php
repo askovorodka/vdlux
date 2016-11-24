@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.11, created on 2016-02-16 19:01:53
-         compiled from /home/a0031953/domains/a0031953.xsph.ru/public_html//modules/shop/admin/templates/shop.a_main.html */ ?>
+<?php /* Smarty version 2.6.11, created on 2016-11-24 12:53:14
+         compiled from /var/www/html//modules/shop/admin/templates/shop.a_main.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'str_repeat', '/home/a0031953/domains/a0031953.xsph.ru/public_html//modules/shop/admin/templates/shop.a_main.html', 30, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'str_repeat', '/var/www/html//modules/shop/admin/templates/shop.a_main.html', 30, false),)), $this); ?>
 <?php echo '
 <DIV id=dhtmltooltip></DIV>
 <SCRIPT language=JavaScript>

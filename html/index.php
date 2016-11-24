@@ -13,9 +13,10 @@ exit;*/
 /* ---------------------- HEADERS ----------------------- */
 
 setlocale (LC_ALL, array ('ru_RU.CP1251', 'rus_RUS.1251'));
-
+date_default_timezone_set('Europe/Moscow');
 session_start();
-error_reporting(E_ALL);
+//error_reporting(E_ALL);
+error_reporting(E_ALL ^ E_DEPRECATED | E_STRICT | E_WARNING);
 //ini_set('display_errors','On');
 
 
@@ -60,7 +61,7 @@ if ($currentUserId = $users->is_auth_shopuser())
 
 }
 
-//вспомогательный класс для каталога товаров
+//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 $shop = new Shop($db);
 
 define ('CAPTCHA_SALT', 'kjhfgkjhfsdkjghskjd hkjfdnkmbn ,msdnbskjh'); 
@@ -75,7 +76,7 @@ $default_modules=$db->get_all("SELECT * FROM fw_modules WHERE default_load='1' A
 $url=Common::get_url($_SERVER['REQUEST_URI'],SCRIPT_FOLDER);
 
 $navigation=array();
-$navigation[]=array("url" => BASE_URL,"title" => 'Главная страница');
+$navigation[]=array("url" => BASE_URL,"title" => 'пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ');
 $page_found=false;
 $set_pages_url=false;
 $module_found=false;
@@ -262,7 +263,7 @@ $shop_menu=$db->get_all("
 	FROM fw_catalogue as a
 	WHERE a.param_level = '1' AND a.status='1' 
 	ORDER BY a.param_left limit 7");
-//добавляем в массив полный путь до категории
+//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 if ($shop_menu)
 {
 	foreach ($shop_menu as $key=>$val)
@@ -340,7 +341,7 @@ for ($i=0;$i<count($navigation);$i++)
   $navigation[$i]['url']=$temp;
 }
 
-//костыль
+//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 if (count($navigation) > 1)
 	unset($navigation[count($navigation)-1]);
 	

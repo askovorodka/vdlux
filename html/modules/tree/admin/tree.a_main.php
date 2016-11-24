@@ -419,7 +419,7 @@ if (isset($_POST['submit_edit_node'])) {
   if ($access_users=='') $access_users='all';
   if ($access_groups=='') $access_groups='all';
 
-  if (isset($_POST['edit_page_text'])) $text=mysql_real_escape_string($_POST['edit_page_text']);
+  if (isset($_POST['edit_page_text'])) $text=($_POST['edit_page_text']);
   else $text='';
 
   if ($name=='') $name="Новый безымянный узел";

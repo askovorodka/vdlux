@@ -1,5 +1,5 @@
-<?php /* Smarty version 2.6.11, created on 2016-02-16 19:02:01
-         compiled from /home/a0031953/domains/a0031953.xsph.ru/public_html//modules/shop/admin/templates/shop.a_products_list.html */ ?>
+<?php /* Smarty version 2.6.11, created on 2016-11-24 12:53:12
+         compiled from /var/www/html//modules/shop/admin/templates/shop.a_products_list.html */ ?>
 <?php echo '
 <DIV id=dhtmltooltip></DIV>
 <SCRIPT language=JavaScript>

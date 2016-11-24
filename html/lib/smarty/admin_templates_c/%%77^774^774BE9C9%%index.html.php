@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.11, created on 2016-02-18 16:06:18
+<?php /* Smarty version 2.6.11, created on 2016-11-24 14:57:43
          compiled from index.html */ ?>
 <html>
 <head>
@@ -70,7 +70,7 @@ if(document.getElementById(name).style.display!="none") {
 								</td>
 							</tr>
 							<tr>
-								<td align="right" height="30"><img src="templates/img/li4.gif" width="13" height="13" hspace="5" align="absmiddle" alt="Перейти к справочному руководству"><a href="http://fastweb.ru/?cms_help" class="white" target="_blank">Помощь</a>&nbsp;&nbsp;&nbsp;</td>
+								<td align="right" height="30"><img src="templates/img/li4.gif" width="13" height="13" hspace="5" align="absmiddle" alt="Перейти к справочному руководству"><a href="http://fastweb.ru/?cms_help" class="white" target="_blank">Help</a>&nbsp;&nbsp;&nbsp;</td>
 							</tr>
 						</table>
 					</td>
@@ -96,7 +96,7 @@ if(document.getElementById(name).style.display!="none") {
 		<td style="border-bottom: 40px solid #FFFFFF">
 			<table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0">
 				<tr bgcolor="#E2EFEE">
-					<td height="41" width="230" style="border-top: 1px solid #FFFFFF; border-bottom: 11px solid #FFFFFF; padding: 0px 8px 0px 8px" align="center"><b>Доступные модули</b></td>
+					<td height="41" width="230" style="border-top: 1px solid #FFFFFF; border-bottom: 11px solid #FFFFFF; padding: 0px 8px 0px 8px" align="center"><b>Modules</b></td>
 					<td style="border-top: 1px solid #FFFFFF; border-bottom: 11px solid #FFFFFF;" class="menu">
 						<img src="templates/img/li5.gif" width="14" height="14" hspace="5" align="absmiddle" alt="Путь">
 						<?php $_from = $this->_tpl_vars['navigation']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }$this->_foreach['nav_loop'] = array('total' => count($_from), 'iteration' => 0);
@@ -110,7 +110,7 @@ if ($this->_foreach['nav_loop']['total'] > 0):
 						      <?php if (! ($this->_foreach['nav_loop']['iteration'] <= 1)): ?>/<?php endif; ?> <?php echo $this->_tpl_vars['ntitle']; ?>
 
 						      <?php else: ?>
-						        <?php if (! ($this->_foreach['nav_loop']['iteration'] <= 1)): ?>/<?php endif; ?> <a href="<?php echo $this->_tpl_vars['nav']['url']; ?>
+						        <?php if (! ($this->_foreach['nav_loop']['iteration'] <= 1)): ?>/<?php endif; ?> 1<a href="<?php echo $this->_tpl_vars['nav']['url']; ?>
 " class=menu><?php echo $this->_tpl_vars['ntitle']; ?>
 </a>
 						      <?php endif; ?>

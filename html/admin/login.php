@@ -1,7 +1,7 @@
 <?php
 ob_start("ob_gzhandler");
 session_start();
-
+date_default_timezone_set('Europe/Moscow');
 //error_reporting(E_ALL);
 //ini_set('display_errors','On');
 
@@ -14,14 +14,14 @@ require_once '../lib/class.string.php';
 
 $_SESSION['db_connections'] = 0;
 
-/* ------------ ÇÀÃÐÓÇÊÀ ØÀÁËÎÍÈÇÀÒÎÐÀ --------------------*/
+/* ------------ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ --------------------*/
 $smarty = new Smarty;
 
 $smarty->template_dir = 'templates/';
 $smarty->compile_dir = '../lib/smarty/admin_templates_c/';
 $smarty->cache_dir = '../lib/smarty/admin_cache/';
 
-/* ------------ ÏÎÄÊËÞ×ÀÅÌÑß Ê ÁÀÇÅ ÄÀÍÍÛÕ -------------- */
+/* ------------ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ -------------- */
 $db=new db(DB_NAME, DB_HOST, DB_USER, DB_PASS);
 
 //$smarty->debugging=true;
@@ -46,12 +46,12 @@ if (isset($_POST['submit_login_form'])) {
 	$password = String::secure_format($_POST['password']);
 	
 	if ($login < '1') {
-		$smarty->assign("login_message",'Ââåäèòå ïîæàëóéñòà âàø ëîãèí');
+		$smarty->assign("login_message",'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½');
 		$check=false;
 	}
 
 	if ($password < '1') {
-		$smarty->assign("login_message",'Ââåäèòå ïîæàëóéñòà âàø ïàðîëü12');
+		$smarty->assign("login_message",'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½12');
 		$smarty->assign("temp_login",$login);
 		$check=false;
 	}
@@ -72,16 +72,16 @@ if (isset($_POST['submit_login_form'])) {
 				fu.status='1' 
 		");
 		if (!isset($content['priv'])) $content['priv']=9;
-		if (!isset($content['priv_name'])) $content['priv_name']="Ïîëüçîâàòåëü";
+		if (!isset($content['priv_name'])) $content['priv_name']="ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½";
 
 		$password_to_check = @$content['password'];
 		if (empty($password_to_check) || $content['priv']>=9) {
-			$smarty->assign("login_message",'Òàêîãî ïîëüçîâàòåëÿ íå ñóùåñòâóåò');
+			$smarty->assign("login_message",'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');
 		}
 		else {
 
 			if (md5($password) != $password_to_check) {
-				$smarty->assign("login_message",'Íåïðàâèëüíûé ïàðîëü');
+				$smarty->assign("login_message",'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');
 				$smarty->assign("temp_login",$login);
 			}
 			else {
